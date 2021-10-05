@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_films"
+        android:enabled="true"
+        android:icon="@drawable/ic_film"
+        android:title="@string/homeFragment_menu_films" />
+    <item
+        android:id="@+id/menu_homePage"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="@string/homeFragment_menu_homePage" />
+    <item
+        android:id="@+id/menu_series"
+        android:enabled="true"
+        android:icon="@drawable/ic_series"
+        android:title="@string/homeFragment_menu_series" />
+
+</menu>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.example.batmanproject.widget.MainToolbar
+        android:id="@+id/mainToolbar_homeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mainToolbar_title="@string/homeFragment_toolbarTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_all_0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/padding_all_60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainToolbar_homeFragment"
+        tools:listitem="@layout/item_movies" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_all_16dp"
+        android:layout_marginRight="@dimen/margin_all_16dp"
+        android:layout_marginBottom="@dimen/margin_all_20dp"
+        android:background="@drawable/bottom_navigationbar_background_curved"
+        app:itemHorizontalTranslationEnabled="true"
+        app:itemIconTint="@drawable/bottom_navigationbar_selector"
+        app:itemTextColor="@drawable/bottom_navigationbar_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
