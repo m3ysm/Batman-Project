@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import com.example.batmanproject.R
 import com.example.batmanproject.databinding.LayoutToolbarMainBinding
+import com.example.batmanproject.util.extensions.invisible
+import com.example.batmanproject.util.extensions.visible
 
 class MainToolbar : RelativeLayout {
 
     private var _binding: LayoutToolbarMainBinding? = null
     private val binding get() = _binding!!
-    private var title: String = ""
+    private var title: String? = null
+    private var isBackIconVisible = true
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
@@ -32,13 +35,35 @@ class MainToolbar : RelativeLayout {
 
     private fun init(attrs: AttributeSet?) {
         context.theme.obtainStyledAttributes(attrs, R.styleable.mainToolbar_styleable, 0, 0).apply {
-            title = getString(R.styleable.mainToolbar_styleable_mainToolbar_title).toString()
+            try {
+                title = getString(R.styleable.mainToolbar_styleable_mainToolbar_title)
+                isBackIconVisible =
+                    getBoolean(
+                        R.styleable.mainToolbar_styleable_mainToolbar_isBackIconVisible,
+                        true
+                    )
+            } catch (e: Exception) {
+
+            } finally {
+                recycle()
+            }
         }
+        setBackButtonVisibility()
         setTitle(title)
     }
 
-    private fun setTitle(title: String) {
-        binding.textViewMainToolbarTitle.text = title
+    private fun setBackButtonVisibility() {
+        if (isBackIconVisible) {
+            binding.imageViewMainToolbarBack.visible()
+        } else {
+            binding.imageViewMainToolbarBack.invisible()
+        }
+    }
+
+    fun setTitle(title: String?) {
+        title?.let {
+            binding.textViewMainToolbarTitle.text = it
+        }
     }
 
     fun setOnBackPressedListener(listener: OnClickListener) {

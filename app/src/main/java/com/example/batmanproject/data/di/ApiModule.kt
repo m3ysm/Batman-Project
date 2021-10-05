@@ -14,10 +14,10 @@ import java.util.concurrent.TimeUnit
 
 val apiModule = module {
 
-    single(named("default")) {
-        RetrofitServiceBuilder.buildRetrofit(
-            okHttpClient = get(named("default")),
-            baseUrl = Constants.BASE_URL
+    single {
+        RetrofitServiceBuilder.buildService(
+            retrofit = get(named("default")),
+            service = MovieApi::class.java
         )
     }
 
@@ -33,10 +33,12 @@ val apiModule = module {
         okHttpBuilder.build()
     }
 
-    single {
-        RetrofitServiceBuilder.buildService(
-            retrofit = get(named("default")),
-            service = MovieApi::class.java
+    single(named("default")) {
+        RetrofitServiceBuilder.buildRetrofit(
+            okHttpClient = get(named("default")),
+            baseUrl = Constants.BASE_URL
         )
     }
+
+
 }
