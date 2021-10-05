@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common Dimension -->
+    <dimen name="height_all_0dp">0dp</dimen>
+    <dimen name="width_all_0dp">0dp</dimen>
+</resources>
