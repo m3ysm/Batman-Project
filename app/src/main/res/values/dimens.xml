@@ -8,6 +8,7 @@
     <dimen name="height_all_35dp">35dp</dimen>
     <dimen name="padding_all_6dp">6dp</dimen>
     <dimen name="padding_all_60dp">60dp</dimen>
+    <dimen name="padding_all_90dp">90dp</dimen>
     <dimen name="margin_all_50dp">50dp</dimen>
     <dimen name="margin_all_20dp">20dp</dimen>
     <dimen name="margin_all_40dp">40dp</dimen>
@@ -20,4 +21,5 @@
     <dimen name="margin_all_30dp">30dp</dimen>
     <integer name="constraintVerticalBias_0">0</integer>
     <integer name="constraintVerticalBias_1">1</integer>
+    <dimen name="height_all_80dp">80dp</dimen>
 </resources>

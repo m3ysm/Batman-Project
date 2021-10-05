@@ -6,7 +6,7 @@ data class ApiResponse<T>(
     @SerializedName("Search")
     val search: T,
     @SerializedName("totalResults")
-    val totalResults: String,
+    val totalResults: Int,
     @SerializedName("Response")
     val response: Boolean
 )

@@ -1,12 +1,15 @@
 package com.example.batmanproject.util.extensions
 
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.batmanproject.R
+import com.example.batmanproject.widget.MainToolbar
 import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.showSnack(view: View, message: String) {
@@ -23,5 +26,11 @@ fun Fragment.showSnack(view: View, message: String) {
         snackBarView.fitsSystemWindows = false
         ViewCompat.setOnApplyWindowInsetsListener(snackBarView, null)
         snack.show()
+    }
+}
+
+fun Fragment.initToolbar(toolbar: MainToolbar) {
+    toolbar.setOnBackPressedListener {
+        findNavController().navigateUp()
     }
 }

@@ -10,11 +10,11 @@ import retrofit2.http.Query
 
 interface MovieApi {
 
-    @GET("")
+    @GET("/")
     fun getMovies(@Query("apikey") apikey: String, @Query("s") s: String)
             : Single<Response<ApiResponse<ArrayList<GetMoviesResponseModel>>>>
 
-    @GET("")
+    @GET("/")
     fun getMovieDetails(@Query("apikey") apikey: String, @Query("i") i: String)
             : Single<Response<GetMovieDetailsResponseModel>>
 }
