@@ -4,14 +4,19 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.os.Build
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.example.batmanproject.R
-import kotlinx.android.synthetic.main.layout_progress.view.*
+import com.example.batmanproject.data.model.progressbar.ProgressBarStatus
+import com.example.batmanproject.databinding.LayoutProgressBinding
 
 class ProgressLayout : RelativeLayout {
+
+    private var _binding: LayoutProgressBinding? = null
+    private val binding get() = _binding!!
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -22,69 +27,66 @@ class ProgressLayout : RelativeLayout {
     )
 
     init {
+        _binding = LayoutProgressBinding.inflate(LayoutInflater.from(context), this, true)
         init()
     }
 
     private fun init() {
-        inflate(context, R.layout.layout_progress, this)
-        setStatus(STATUS.DONE)
+        setStatus(ProgressBarStatus.DONE)
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            val wrapDrawable = DrawableCompat.wrap(progressBar.indeterminateDrawable)
+            val wrapDrawable =
+                DrawableCompat.wrap(binding.progressLayoutProgressBar.indeterminateDrawable)
             DrawableCompat.setTint(
                 wrapDrawable,
-                ContextCompat.getColor(context, R.color.orange)
+                ContextCompat.getColor(context, R.color.colorPrimaryAccent)
             )
-            progressBar.indeterminateDrawable = DrawableCompat.unwrap(wrapDrawable)
+            binding.progressLayoutProgressBar.indeterminateDrawable =
+                DrawableCompat.unwrap(wrapDrawable)
         } else {
-            progressBar.indeterminateDrawable.setColorFilter(
+            binding.progressLayoutProgressBar.indeterminateDrawable.setColorFilter(
                 ContextCompat.getColor(
                     context,
-                    R.color.orange
+                    R.color.colorPrimaryAccent
                 ), PorterDuff.Mode.SRC_IN
             )
         }
     }
 
-    fun setStatus(status: STATUS, errorText: String = "") {
+    fun setStatus(status: ProgressBarStatus, errorText: String = "") {
         when (status) {
             // error
-            STATUS.ERROR -> {
-                prpgressBarRootLayout.visibility = View.VISIBLE
-                progressTextView.text = "بروز خطا"
-                progressTextView.visibility = View.VISIBLE
-                progressBar.visibility = View.INVISIBLE
-                prpgressBarRootLayout.visibility = View.VISIBLE
-                progressTextView.text = errorText
+            ProgressBarStatus.ERROR -> {
+                binding.progressLayoutRoot.visibility = View.VISIBLE
+                binding.progressLayoutTitle.text = context.getString(R.string.progressLayout_error)
+                binding.progressLayoutTitle.visibility = View.VISIBLE
+                binding.progressLayoutProgressBar.visibility = View.INVISIBLE
+                binding.progressLayoutRoot.visibility = View.VISIBLE
+                binding.progressLayoutTitle.text = errorText
             }
 
             // loading
-            STATUS.LOADING -> {
-                prpgressBarRootLayout.visibility = View.VISIBLE
-                progressTextView.text = "لطفا منتظر بمانید"
-                progressTextView.visibility = View.VISIBLE
-                progressBar.visibility = View.VISIBLE
-                prpgressBarRootLayout.visibility = View.VISIBLE
+            ProgressBarStatus.LOADING -> {
+                binding.progressLayoutRoot.visibility = View.VISIBLE
+                binding.progressLayoutTitle.text =
+                    context.getString(R.string.progressLayout_pleaseWait)
+                binding.progressLayoutTitle.visibility = View.VISIBLE
+                binding.progressLayoutProgressBar.visibility = View.VISIBLE
+                binding.progressLayoutRoot.visibility = View.VISIBLE
                 requestLayout()
             }
 
             // done
-            STATUS.DONE -> {
-                prpgressBarRootLayout.visibility = View.GONE
-                progressTextView.text = ""
-                progressTextView.visibility = View.INVISIBLE
-                progressBar.visibility = View.INVISIBLE
-                prpgressBarRootLayout.visibility = View.GONE
+            ProgressBarStatus.DONE -> {
+                binding.progressLayoutRoot.visibility = View.GONE
+                binding.progressLayoutTitle.text = ""
+                binding.progressLayoutTitle.visibility = View.INVISIBLE
+                binding.progressLayoutProgressBar.visibility = View.INVISIBLE
+                binding.progressLayoutRoot.visibility = View.GONE
             }
         }
     }
 
     fun setErrorText(text: String) {
-        progressTextView.text = text
-    }
-
-    enum class STATUS {
-        LOADING,
-        ERROR,
-        DONE
+        binding.progressLayoutTitle.text = text
     }
 }
