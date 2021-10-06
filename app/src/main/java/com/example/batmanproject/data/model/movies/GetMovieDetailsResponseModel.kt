@@ -6,7 +6,7 @@ data class GetMovieDetailsResponseModel(
     @SerializedName("Title")
     val title: String,
     @SerializedName("Year")
-    val year: Int,
+    val year: String,
     @SerializedName("Rated")
     val rated: String,
     @SerializedName("Released")
@@ -34,7 +34,7 @@ data class GetMovieDetailsResponseModel(
     @SerializedName("Ratings")
     val ratings: ArrayList<Ratings>,
     @SerializedName("Metascore")
-    val metascore: Int,
+    val metascore: String,
     @SerializedName("imdbRating")
     val imdbRating: Double,
     @SerializedName("imdbVotes")

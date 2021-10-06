@@ -16,4 +16,14 @@
     <string name="homeFragment_year">Year:</string>
     <string name="homeFragment_type">Type:</string>
     <string name="homeFragment_comingSoon">Coming Soon...!</string>
+
+    <!-- Details Fragment -->
+    <string name="detailsFragment_toolbarTitle">Details</string>
+    <string name="detailsFragment_constraintDimensionRatio">H,0.85</string>
+    <string name="detailsFragment_plotTitle">Introduction:</string>
+    <string name="detailsFragment_durationTitle">Duration:</string>
+    <string name="detailsFragment_directorTitle">Director:</string>
+    <string name="detailsFragment_actorsTitle">Actors:</string>
+    <string name="detailsFragment_awardsTitle">Awards:</string>
+    <string name="detailsFragment_boxOfficeTitle">BoxOffice:</string>
 </resources>
