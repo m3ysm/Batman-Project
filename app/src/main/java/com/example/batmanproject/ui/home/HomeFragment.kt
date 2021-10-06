@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.batmanproject.R
 import com.example.batmanproject.data.exception.common.NetworkException
 import com.example.batmanproject.data.model.Status
@@ -12,6 +13,7 @@ import com.example.batmanproject.data.model.movies.GetMoviesResponseModel
 import com.example.batmanproject.data.model.progressbar.ProgressBarStatus
 import com.example.batmanproject.databinding.FragmentHomeBinding
 import com.example.batmanproject.ui.base.BaseFragment
+import com.example.batmanproject.ui.details.DetailsFragment
 import com.example.batmanproject.util.extensions.initToolbar
 import com.example.batmanproject.util.extensions.showSnack
 import com.example.batmanproject.util.extensions.visible
@@ -86,7 +88,8 @@ class HomeFragment : BaseFragment() {
     private fun initRecyclerView(it: ArrayList<GetMoviesResponseModel>) {
         val recyclerView = binding.recyclerViewHomeFragment
         val adapter = HomeRecyclerViewAdapter(it, onItemClicked = {
-            // navigate to details fragment
+            val bundle = DetailsFragment.newInstance(it)
+            findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
         })
         recyclerView.hasFixedSize()
         recyclerView.adapter = adapter
