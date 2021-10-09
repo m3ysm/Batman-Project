@@ -1,4 +1,4 @@
-package com.example.batmanproject.ui.details.domain
+package com.example.batmanproject.ui.home.domain
 
 import com.example.batmanproject.data.exception.common.NetworkException
 import com.example.batmanproject.data.model.MyResponse

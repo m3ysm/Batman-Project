@@ -1,6 +1,7 @@
 package com.example.batmanproject.data.model.movies
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GetMovieDetailsResponseModel(
     @SerializedName("Title")
@@ -53,4 +54,4 @@ data class GetMovieDetailsResponseModel(
     val website: String,
     @SerializedName("Response")
     val response: Boolean
-)
+) : Serializable
