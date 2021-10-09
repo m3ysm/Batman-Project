@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.example.batmanproject.common.MyApplication"
+        android:name=".common.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BatmanProject"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.splash.SplashScreenActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
