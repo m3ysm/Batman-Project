@@ -25,6 +25,7 @@ class HomeFragment : BaseFragment() {
     private val viewModel: HomeViewModel by inject()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private var movies = ArrayList<GetMoviesResponseModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +37,40 @@ class HomeFragment : BaseFragment() {
 
     override fun initListeners() {
         setBottomNavigationViewListener()
+        observeGetMovieDetails()
+    }
+
+    private fun observeGetMovieDetails() {
+        viewModel.getMovieDetailsLiveData.observe(viewLifecycleOwner, Observer { it ->
+            when (it.status) {
+                Status.LOADING -> {
+                    binding.progressLayoutHomeFragment.setStatus(ProgressBarStatus.LOADING)
+                }
+                Status.SUCCESS -> {
+                    binding.progressLayoutHomeFragment.setStatus(ProgressBarStatus.DONE)
+                    it.data?.let {
+                        val bundle = DetailsFragment.newInstance(it)
+                        findNavController().navigate(
+                            R.id.action_homeFragment_to_detailsFragment,
+                            bundle
+                        )
+                    }
+                }
+                Status.FAILED -> {
+                    binding.progressLayoutHomeFragment.setStatus(ProgressBarStatus.DONE)
+                    it.throwable?.let { throwable ->
+                        when (throwable) {
+                            is NetworkException -> {
+                                showSnack(requireView(), getString(R.string.all_error))
+                            }
+                        }
+                    }
+                    it.message?.let {
+                        showSnack(requireView(), it)
+                    }
+                }
+            }
+        })
     }
 
     private fun setBottomNavigationViewListener() {
@@ -65,7 +100,8 @@ class HomeFragment : BaseFragment() {
                 Status.SUCCESS -> {
                     binding.progressLayoutHomeFragment.setStatus(ProgressBarStatus.DONE)
                     it.data?.let {
-                        initRecyclerView(it)
+                        movies = it
+                        initRecyclerView()
                     }
                 }
                 Status.FAILED -> {
@@ -85,11 +121,10 @@ class HomeFragment : BaseFragment() {
         })
     }
 
-    private fun initRecyclerView(it: ArrayList<GetMoviesResponseModel>) {
+    private fun initRecyclerView() {
         val recyclerView = binding.recyclerViewHomeFragment
-        val adapter = HomeRecyclerViewAdapter(it, onItemClicked = {
-            val bundle = DetailsFragment.newInstance(it)
-            findNavController().navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
+        val adapter = HomeRecyclerViewAdapter(movies, onItemClicked = {
+            viewModel.getMovieDetails(it)
         })
         recyclerView.hasFixedSize()
         recyclerView.adapter = adapter
@@ -109,7 +144,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun getMovies() {
-        viewModel.getMovies()
+        viewModel.getMovies(movies)
     }
 
     private fun initToolbar() {

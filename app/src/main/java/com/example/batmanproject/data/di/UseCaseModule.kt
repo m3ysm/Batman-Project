@@ -1,6 +1,6 @@
 package com.example.batmanproject.data.di
 
-import com.example.batmanproject.ui.details.domain.GetMovieDetailsUseCase
+import com.example.batmanproject.ui.home.domain.GetMovieDetailsUseCase
 import com.example.batmanproject.ui.home.domain.GetMoviesUseCase
 import org.koin.dsl.module
 

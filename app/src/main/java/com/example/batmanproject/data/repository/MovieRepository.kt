@@ -8,7 +8,7 @@ import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
-class MovieRepository(private val rest: MovieApi) {
+class MovieRepository(private val rest: MovieApi) : BaseRepository() {
 
     fun getMovies(apikey: String, s: String)
             : Single<Response<ApiResponse<ArrayList<GetMoviesResponseModel>>>> {
