@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.details.DetailsFragment">
+
+    <com.github.florent37.shapeofview.shapes.DiagonalView
+        android:id="@+id/shapeOfView_detailsFragment_backImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_all_0dp"
+        app:layout_constraintDimensionRatio="@string/detailsFragment_constraintDimensionRatio"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shape_diagonal_angle="@integer/diagonalAngle_detailsFragment_backImage"
+        app:shape_diagonal_direction="left"
+        app:shape_diagonal_position="bottom">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_detailsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView_detailsFragment_backImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.github.florent37.shapeofview.shapes.DiagonalView>
+
+    <com.example.batmanproject.widget.MainToolbar
+        android:id="@+id/mainToolbar_detailsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mainToolbar_isBackIconVisible="true"
+        app:mainToolbar_title="@string/detailsFragment_toolbarTitle" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_detailsFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_all_0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/margin_all_20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline_detailsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_all_0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guideline_detailsFragment">
+
+            <View
+                android:id="@+id/view_detailsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_all_0dp"
+                android:layout_marginLeft="@dimen/margin_all_20dp"
+                android:layout_marginTop="@dimen/margin_all_40dp"
+                android:layout_marginRight="@dimen/margin_all_20dp"
+                android:background="@drawable/bg_curve"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/imageView_detailsFragment_poster"
+                app:layout_constraintTop_toTopOf="@+id/imageView_detailsFragment_poster" />
+
+            <ImageView
+                android:id="@+id/imageView_detailsFragment_poster"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_20dp"
+                android:adjustViewBounds="true"
+                android:background="@color/white"
+                android:scaleType="fitXY"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="@integer/constraintVerticalBias_0" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_plotTitle"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginTop="@dimen/margin_all_20dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:text="@string/detailsFragment_plotTitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_detailsFragment_poster"
+                app:layout_constraintVertical_bias="@integer/constraintVerticalBias_0" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_plot"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_plotTitle" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_title"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginTop="@dimen/margin_all_10dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toRightOf="@+id/imageView_detailsFragment_poster"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toTopOf="@+id/view_detailsFragment"
+                app:layout_constraintVertical_bias="@integer/constraintVerticalBias_0" />
+
+            <ImageView
+                android:id="@+id/imageView_detailsFragment_starIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star"
+                app:layout_constraintLeft_toLeftOf="@+id/textView_detailsFragment_title"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_title" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_imdbRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_5dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintBottom_toBottomOf="@id/imageView_detailsFragment_starIcon"
+                app:layout_constraintLeft_toRightOf="@+id/imageView_detailsFragment_starIcon"
+                app:layout_constraintTop_toTopOf="@id/imageView_detailsFragment_starIcon" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_released"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintLeft_toRightOf="@+id/imageView_detailsFragment_poster"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_detailsFragment_starIcon" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_durationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:text="@string/detailsFragment_durationTitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toRightOf="@+id/imageView_detailsFragment_poster"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_released" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_duration"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_5dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_detailsFragment_durationTitle"
+                app:layout_constraintLeft_toRightOf="@+id/textView_detailsFragment_durationTitle"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toTopOf="@+id/textView_detailsFragment_durationTitle" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_directorTitle"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:text="@string/detailsFragment_directorTitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_plot"
+                app:layout_constraintVertical_bias="@integer/constraintVerticalBias_0" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_director"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_directorTitle" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_actorsTitle"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:text="@string/detailsFragment_actorsTitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_director" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_actors"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_actorsTitle" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_awardsTitle"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:text="@string/detailsFragment_awardsTitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_actors" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_awards"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_awardsTitle" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_boxOfficeTitle"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="left"
+                android:text="@string/detailsFragment_boxOfficeTitle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_16sp"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_awards" />
+
+            <TextView
+                android:id="@+id/textView_detailsFragment_boxOffice"
+                android:layout_width="@dimen/width_all_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_16dp"
+                android:layout_marginRight="@dimen/margin_all_10dp"
+                android:layout_marginBottom="@dimen/margin_all_10dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="left"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_all_14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/view_detailsFragment"
+                app:layout_constraintRight_toRightOf="@+id/view_detailsFragment"
+                app:layout_constraintTop_toBottomOf="@+id/textView_detailsFragment_boxOfficeTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.example.batmanproject.widget.ProgressLayout
+        android:id="@+id/progressLayout_detailsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

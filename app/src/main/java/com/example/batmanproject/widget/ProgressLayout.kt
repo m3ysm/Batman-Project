@@ -57,7 +57,7 @@ class ProgressLayout : RelativeLayout {
             // error
             ProgressBarStatus.ERROR -> {
                 binding.progressLayoutRoot.visibility = View.VISIBLE
-                binding.progressLayoutTitle.text = context.getString(R.string.progressLayout_error)
+                binding.progressLayoutTitle.text = context.getString(R.string.all_error)
                 binding.progressLayoutTitle.visibility = View.VISIBLE
                 binding.progressLayoutProgressBar.visibility = View.INVISIBLE
                 binding.progressLayoutRoot.visibility = View.VISIBLE
