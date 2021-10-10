@@ -79,7 +79,7 @@ dependencies {
     //Timber Logger
     implementation "com.jakewharton.timber:timber:$timber"
     //Finding memory leaks by leak canary
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary"
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanary"
     //Logging API requests
     debugImplementation "com.readystatesoftware.chuck:library:$chuckVersiosn"
     releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuckVersiosn"
@@ -88,6 +88,14 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$roomVersion"
     annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    //test
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigationVersion"
+    testImplementation "org.koin:koin-test:2.1.6"
+    testImplementation "org.mockito:mockito-inline:3.0.0"
+    testImplementation "android.arch.core:core-testing:1.1.1"
+    androidTestImplementation "android.arch.core:core-testing:1.1.1"
+    androidTestImplementation 'org.mockito:mockito-android:3.0.0'
+    androidTestImplementation "org.koin:koin-test:2.1.6"
 }
 
 //Generating a version code automatically for incremental release
