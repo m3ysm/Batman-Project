@@ -4,6 +4,8 @@
     <item android:drawable="@color/colorPrimaryDark" />
 
     <item
+        android:width="100dp"
+        android:height="100dp"
         android:drawable="@drawable/ic_logo"
         android:gravity="center" />
 
